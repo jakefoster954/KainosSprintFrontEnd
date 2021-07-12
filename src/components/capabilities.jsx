@@ -10,7 +10,6 @@ class Capabilities extends Component {
 	async retreiveCapabilities() {
 		const { data: capabilities } = await getCapabilities()
 		this.setState({ capabilities })
-		console.log(capabilities)
 	}
 
 	async componentDidMount() {
@@ -34,15 +33,6 @@ class Capabilities extends Component {
 					<tbody>
 						{capabilities.map((capability) => (
 							<tr className='tableBody' key={capability.capabilityName}>
-								<td>
-									{/* <Link
-										to={{
-											pathname: `/job-role/${jobRole.jobName}`,
-										}}
-									>
-										{jobRole.jobName}
-									</Link> */}
-								</td>
 								<td>{capability.capabilityName}</td>
 							</tr>
 						))}
