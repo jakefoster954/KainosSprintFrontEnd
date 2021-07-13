@@ -39,21 +39,19 @@ class LoginPage extends Component {
 		if (errorMessage) errors[input.name] = errorMessage
 		else delete errors[input.name]
 		const account = { ...this.state.account }
-		console.log(account)
-		console.log(errors)
 		account[input.name] = input.value
 		this.setState({ account, errors })
 	}
 
-	handleSubmit = async (e) => {
-		e.preventDefault()
+	// handleSubmit = async (e) => {
+	// 	e.preventDefault()
 
-		const errors = this.validate()
-		this.setState({ errors: errors || {} })
+	// 	const errors = this.validate()
+	// 	this.setState({ errors: errors || {} })
 
-		const response = await login(this.state.email, this.state.password)
-		console.log(response)
-	}
+	// 	const response = await login(this.state.email, this.state.password)
+	// 	console.log(response)
+	// }
 
 	render() {
 		const { account, errors } = this.state
