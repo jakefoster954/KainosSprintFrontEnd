@@ -36,16 +36,7 @@ class CapabilityLead extends Component {
 							</div>
 						</div>
 					</div>
-					{/* <div className='card-body'>
-						Find out more{' '}
-						<a
-							href='#'
-							target='_blank'
-							rel='noopener noreferrer'
-						>
-							here
-						</a>
-					</div> */}
+					
 				</div>
 			</div>
 		)
