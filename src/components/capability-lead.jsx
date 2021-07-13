@@ -7,15 +7,12 @@ class CapabilityLead extends Component {
 	}
 
 	async retreiveCapabilityLead() {
-		const { data: capabilityLead } = await getCapabilityLead(
-			this.props.match.params.leadName
-		)
+		const { data: capabilityLead } = await getCapabilityLead(this.props.match.params.leadName)
 		this.setState({ capabilityLead })
 	}
 
 	async componentDidMount() {
 		await this.retreiveCapabilityLead()
-		console.log('mounted')
 	}
 
 	render() {
@@ -25,8 +22,6 @@ class CapabilityLead extends Component {
 				<div className='card' id='capabilityLeadCard'>
 					<div className='card-header text-center'>
 						<h1 id='capabilityLeadHeader'>{capabilityLead.leadName}</h1>
-						<h3 id='capabilityHeader'>Capability</h3>
-						<h3 id='bandLevelHeader'>Band Level</h3>
 					</div>
 					<div className='card-body'>
 						<div className='jumbotron'>
@@ -38,7 +33,11 @@ class CapabilityLead extends Component {
 					</div>
 					<div className='card-body'>
 						Find out more{' '}
-						<a href='#' target='_blank' rel='noopener noreferrer'>
+						<a
+							href='#'
+							target='_blank'
+							rel='noopener noreferrer'
+						>
 							here
 						</a>
 					</div>
