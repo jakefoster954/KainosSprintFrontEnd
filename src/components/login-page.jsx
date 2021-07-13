@@ -61,7 +61,7 @@ class LoginPage extends Component {
 
 		const password = await this.hash(this.state.account.password)
 
-		const response = await login(this.state.email, password)
+		const response = await login(this.state.account.email, password)
 		console.log(response)
 		console.log(password)
 	}
