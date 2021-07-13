@@ -21,7 +21,7 @@ class App extends Component {
 							<Route path='/job-roles' component={JobRoles} />
 							<Route path='/job-role/:jobName' component={JobRole} />
 							<Route path='/capabilities' component={Capabilities} />
-							<Route path='/capabilities/:leadName' component={CapabilityLead} />
+							<Route path='/capability/:leadName' component={CapabilityLead} />
 							<Route path='/not-found' component={NotFound} />
 							<Redirect to='/not-found' />
 						</Switch>

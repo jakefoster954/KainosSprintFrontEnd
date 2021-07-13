@@ -18,6 +18,7 @@ class Capabilities extends Component {
 
 	render() {
 		const { capabilities } = this.state
+		console.log(capabilities)
 
 		return (
 			<div className='d-flex justify-content-center'>
@@ -38,7 +39,7 @@ class Capabilities extends Component {
 								<td>
 									<Link
 										to={{
-											pathname: `/capabilities/${capability.leadName}`,
+											pathname: `/capability/${capability.leadName}`,
 										}}
 									>
 										{capability.leadName}
