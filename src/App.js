@@ -4,6 +4,7 @@ import './App.css'
 import JobRoles from './components/job-roles'
 import JobRole from './components/job-role'
 import Capabilities from './components/capabilities'
+import CapabilityLead from './components/capability-lead'
 import NavBar from './components/nav-bar'
 import NotFound from './components/not-found'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -19,8 +20,9 @@ class App extends Component {
 						<Switch>
 							<Route path='/job-roles' component={JobRoles} />
 							<Route path='/job-role/:jobName' component={JobRole} />
-							<Route path='/not-found' component={NotFound} />
 							<Route path='/capabilities' component={Capabilities} />
+							<Route path='/capabilities/:leadName' component={CapabilityLead} />
+							<Route path='/not-found' component={NotFound} />
 							<Redirect to='/not-found' />
 						</Switch>
 					</div>

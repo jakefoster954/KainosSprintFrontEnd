@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getCapabilities } from '../servcies/jobService'
+import { Link } from 'react-router-dom'
 
 class Capabilities extends Component {
 	state = {
@@ -34,7 +35,15 @@ class Capabilities extends Component {
 						{capabilities.map((capability) => (
 							<tr className='tableBody' key={capability.capabilityName}>
 								<td>{capability.capabilityName}</td>
-								<td>{capability.leadName}</td>
+								<td>
+									<Link
+										to={{
+											pathname: `/capabilities/${capability.leadName}`,
+										}}
+									>
+										{capability.leadName}
+									</Link>
+								</td>
 							</tr>
 						))}
 					</tbody>
