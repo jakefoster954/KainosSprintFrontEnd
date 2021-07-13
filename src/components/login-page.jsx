@@ -18,12 +18,10 @@ class LoginPage extends Component {
 	}
 
 	async hash(password) {
-		const bcrypt = require('bcryptjs')
-		console.log(password)
-		console.log(bcrypt)
-		const hashed = await bcrypt.hash(password, 10)
-		this.setState({ password: hashed })
-		return hashed
+		const cryptoJS = require("crypto-js");
+		const hash = cryptoJS.SHA3(password).toString();
+		console.log(hash);
+		return hash
 	}
 
 	validate = () => {
