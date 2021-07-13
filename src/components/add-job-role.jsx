@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Input from './common/input'
+import Select from './common/select'
+import { addJobToDb } from '../servcies/jobService'
 
 class AddJobRole extends Component {
 	state = {
@@ -7,9 +9,26 @@ class AddJobRole extends Component {
 			jobName: '',
 			jobSpec: '',
 			jobURL: '',
+			capability: '',
 			bandLevel: '',
-			jobFamily: '',
 		},
+	}
+
+	async addJob() {
+		await addJobToDb(this.state.jobRole)
+	}
+
+	handleChange = ({ currentTarget: input }) => {
+		const jobRole = { ...this.state.jobRole }
+		jobRole[input.name] = input.value
+		this.setState({ jobRole })
+	}
+
+	handleSubmit = async (e) => {
+		e.preventDefault()
+
+		const response = await addJobToDb(this.state.jobRole)
+		console.log(response)
 	}
 
 	render() {
@@ -20,11 +39,38 @@ class AddJobRole extends Component {
 					<h3>Add New Job</h3>
 				</div>
 				<div className='card-body'>
-					<Input label='Job Role Name' name='jobRoleName' />
-					<Input label='Job Role Specification' name='jobSpec' />
-					<Input label='Job Role Link' name='jobRoleLink' />
-					<Input label='Job Role Name' name='jobRoleName' />
-					<Input label='Job Role Name' name='jobRoleName' />
+					<form onSubmit={this.handleSubmit}>
+						<Input
+							label='Job Role Name'
+							name='jobRoleName'
+							onChange={this.handleChange}
+						/>
+						<Input
+							label='Job Role Specification'
+							name='jobSpec'
+							onChange={this.handleChange}
+						/>
+						<Input
+							label='Job Role Link'
+							name='jobRoleLink'
+							onChange={this.handleChange}
+						/>
+						<Select
+							label='Capability'
+							name='capability'
+							options={[{ name: 'Engineering' }, { name: 'AI' }]}
+							onChange={this.handleChange}
+						/>
+						<Select
+							label='Band Level'
+							name='bandLevel'
+							options={[]}
+							onChange={this.handleChange}
+						/>
+						<button type='submit' className='btn btn-light'>
+							Submit
+						</button>
+					</form>
 				</div>
 			</div>
 		)

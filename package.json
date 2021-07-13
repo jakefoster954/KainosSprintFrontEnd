@@ -9,6 +9,8 @@
     "axios": "^0.21.1",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.6.0",
+    "bootstrap-select": "^1.13.18",
+    "bootstrap-select-dropdown": "^0.14.6",
     "joi-browser": "^13.4.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",

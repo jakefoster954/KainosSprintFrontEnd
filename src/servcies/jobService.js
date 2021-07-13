@@ -11,7 +11,7 @@ export function getJobRole(jobName) {
 }
 
 export function getCapabilities() {
-	console.log("GetCapabilities() is running")
+	console.log('GetCapabilities() is running')
 	return http.get('http://localhost:8080/api/capabilities')
 }
 
@@ -19,4 +19,14 @@ export function getCapabilityLead(leadName) {
 	const newLeadName = leadName.replace(/\W+/g, '-')
 	console.log(leadName, newLeadName)
 	return http.get(`http://localhost:8080/api/capabilities/${newLeadName}`)
+}
+
+export function addJobToDb(job) {
+	return http.post(`http://localhost:8080/api/add-job`, {
+		jobName: job.jobName,
+		jobSpec: job.jobSpec,
+		jobURL: job.jobURL,
+		capabilityName: job.capability,
+		bandLevelName: job.bandLevel,
+	})
 }
