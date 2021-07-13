@@ -22,8 +22,8 @@ class JobRole extends Component {
 				<div className='card' id='jobCard'>
 					<div className='card-header text-center'>
 						<h1 id='jobHeader'>{jobRole.jobName}</h1>
-						<h3 id='capabilityHeader'>Capability - {jobRole.capability}</h3>
-						<h3 id='bandLevelHeader'>Band Level - {jobRole.bandLevel}</h3>
+						<h3 id='capabilityHeader'>Capability - {jobRole.capabilityName}</h3>
+						<h3 id='bandLevelHeader'>Band Level - {jobRole.bandLevelName}</h3>
 					</div>
 					<div className='card-body'>
 						<div className='jumbotron'>
