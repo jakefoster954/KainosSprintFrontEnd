@@ -45,7 +45,7 @@ class JobRoles extends Component {
 									</Link>
 								</td>
 								<td>{jobRole.capabilityName}</td>
-								<td>{jobRole.bandLevelName}</td>
+								<td>{jobRole.bandName}</td>
 							</tr>
 						))}
 					</tbody>

@@ -1,22 +1,18 @@
 import http from './httpService'
 
 export function getJobRoles() {
-	return http.get('http://localhost:8080/api/job-roles')
+	return http.get('http://localhost:8080/api/getJobNames')
 }
 
 export function getJobRole(jobName) {
-	const newJobName = jobName.replace(/\W+/g, '-')
-	console.log(newJobName, jobName)
-	return http.get(`http://localhost:8080/api/job-roles/${newJobName}`)
+	return http.get(`http://localhost:8080/api/getJobData/${jobName}`)
 }
 
 export function getCapabilities() {
 	console.log("GetCapabilities() is running")
-	return http.get('http://localhost:8080/api/capabilities')
+	return http.get('http://localhost:8080/api/getCapabilityLeads')
 }
 
 export function getCapabilityLead(leadName) {
-	const newLeadName = leadName.replace(/\W+/g, '-')
-	console.log(leadName, newLeadName)
-	return http.get(`http://localhost:8080/api/capabilities/${newLeadName}`)
+	return http.get(`http://localhost:8080/api/getCapabilityLeadData/${leadName}`)
 }
