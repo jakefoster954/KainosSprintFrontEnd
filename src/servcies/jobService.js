@@ -11,8 +11,11 @@ export function getJobRole(jobName) {
 }
 
 export function getCapabilities() {
-	console.log('GetCapabilities() is running')
-	return http.get('http://localhost:8080/api/capabilities')
+	return http.get('http://localhost:8080/api/getCapabilities')
+}
+
+export function getBandLevels() {
+	return http.get('http://localhost:8080/api/getBandLevels')
 }
 
 export function getCapabilityLead(leadName) {

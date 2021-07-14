@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import Input from './common/input'
 import Select from './common/select'
-import { addJobToDb, getCapabilities } from '../servcies/jobService'
+import {
+	addJobToDb,
+	getCapabilities,
+	getBandLevels,
+} from '../servcies/jobService'
 
 class AddJobRole extends Component {
 	state = {
@@ -12,10 +16,13 @@ class AddJobRole extends Component {
 			capability: '',
 			bandLevel: '',
 		},
+		capabilities: [],
+		bandLevels: [],
 	}
 
 	async componentDidMount() {
 		await this.retreiveCapabilities()
+		await this.retreiveBandLevels()
 	}
 
 	async addJob() {
@@ -23,8 +30,15 @@ class AddJobRole extends Component {
 	}
 
 	async retreiveCapabilities() {
-		const response = await getCapabilities()
-		console.log(response)
+		const { data: capabilities } = await getCapabilities()
+		this.setState({ capabilities })
+		console.log(capabilities)
+	}
+
+	async retreiveBandLevels() {
+		const { data: bandLevels } = await getBandLevels()
+		this.setState({ bandLevels })
+		console.log(bandLevels)
 	}
 
 	handleChange = ({ currentTarget: input }) => {
@@ -41,6 +55,7 @@ class AddJobRole extends Component {
 	}
 
 	render() {
+		const { capabilities, bandLevels } = this.state
 		return (
 			<div>
 				<h1>Add Job</h1>
@@ -51,7 +66,7 @@ class AddJobRole extends Component {
 					<form onSubmit={this.handleSubmit}>
 						<Input
 							label='Job Role Name'
-							name='jobRoleName'
+							name='jobName'
 							onChange={this.handleChange}
 						/>
 						<Input
@@ -61,19 +76,19 @@ class AddJobRole extends Component {
 						/>
 						<Input
 							label='Job Role Link'
-							name='jobRoleLink'
+							name='jobURL'
 							onChange={this.handleChange}
 						/>
 						<Select
 							label='Capability'
 							name='capability'
-							options={[{ name: 'Engineering' }, { name: 'AI' }]}
+							options={capabilities}
 							onChange={this.handleChange}
 						/>
 						<Select
 							label='Band Level'
 							name='bandLevel'
-							options={[]}
+							options={bandLevels}
 							onChange={this.handleChange}
 						/>
 						<button type='submit' className='btn btn-light'>
