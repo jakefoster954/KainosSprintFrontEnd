@@ -17,6 +17,13 @@ class LoginPage extends Component {
 		password: Joi.string().required().label('Password'),
 	}
 
+	async hash(password) {
+		const cryptoJS = require("crypto-js");
+		const hash = cryptoJS.SHA3(password).toString();
+		console.log(hash);
+		return hash
+	}
+
 	validate = () => {
 		const options = { abortEarly: false }
 		const { error } = Joi.validate(this.state.account, this.schema, options)
@@ -41,17 +48,21 @@ class LoginPage extends Component {
 		const account = { ...this.state.account }
 		account[input.name] = input.value
 		this.setState({ account, errors })
+		console.log(this.state.account)
 	}
 
-	// handleSubmit = async (e) => {
-	// 	e.preventDefault()
+	handleSubmit = async (e) => {
+		e.preventDefault()
 
-	// 	const errors = this.validate()
-	// 	this.setState({ errors: errors || {} })
+		const errors = this.validate()
+		this.setState({ errors: errors || {} })
 
-	// 	const response = await login(this.state.email, this.state.password)
-	// 	console.log(response)
-	// }
+		const password = await this.hash(this.state.account.password)
+
+		const response = await login(this.state.account.email, password)
+		console.log(response)
+		console.log(password)
+	}
 
 	render() {
 		const { account, errors } = this.state
