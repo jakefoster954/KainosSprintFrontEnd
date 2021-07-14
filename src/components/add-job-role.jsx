@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Input from './common/input'
 import Select from './common/select'
-import { addJobToDb } from '../servcies/jobService'
+import { addJobToDb, getCapabilities } from '../servcies/jobService'
 
 class AddJobRole extends Component {
 	state = {
@@ -14,8 +14,17 @@ class AddJobRole extends Component {
 		},
 	}
 
+	async componentDidMount() {
+		await this.retreiveCapabilities()
+	}
+
 	async addJob() {
 		await addJobToDb(this.state.jobRole)
+	}
+
+	async retreiveCapabilities() {
+		const response = await getCapabilities()
+		console.log(response)
 	}
 
 	handleChange = ({ currentTarget: input }) => {
