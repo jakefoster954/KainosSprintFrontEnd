@@ -30,7 +30,12 @@ class App extends Component {
 				<main>
 					<div className='container p-5'>
 						<Switch>
-							<Route path='/job-roles' component={JobRoles} />
+							<Route
+								path='/job-roles'
+								render={(props) => (
+									<JobRoles user={this.state.user} {...props} />
+								)}
+							/>
 							<Route path='/job-role/:jobName' component={JobRole} />
 							<Route path='/login' component={LoginPage} />
 							<Route path='/capabilities' component={Capabilities} />

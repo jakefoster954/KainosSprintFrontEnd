@@ -3,7 +3,7 @@ import Input from './common/input'
 import Select from './common/select'
 import {
 	addJobToDb,
-	getCapabilities,
+	getCapabilityNames,
 	getBandLevels,
 } from '../servcies/jobService'
 
@@ -30,7 +30,7 @@ class AddJobRole extends Component {
 	}
 
 	async retreiveCapabilities() {
-		const { data: capabilities } = await getCapabilities()
+		const { data: capabilities } = await getCapabilityNames()
 		this.setState({ capabilities })
 		console.log(capabilities)
 	}
@@ -58,7 +58,6 @@ class AddJobRole extends Component {
 		const { capabilities, bandLevels } = this.state
 		return (
 			<div>
-				<h1>Add Job</h1>
 				<div className='card-header'>
 					<h3>Add New Job</h3>
 				</div>

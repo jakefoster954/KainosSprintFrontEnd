@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getJobRoles } from '../servcies/jobService'
 import { Link } from 'react-router-dom'
+import AddJobRole from './add-job-role'
 
 class JobRoles extends Component {
 	state = {
@@ -18,38 +19,49 @@ class JobRoles extends Component {
 
 	render() {
 		const { jobRoles } = this.state
+		const { user } = this.props
+		console.log(this.props.user)
 
 		return (
-			<div className='d-flex justify-content-center'>
-				<table
-					className='table table-striped table-bordered text-center'
-					id='jobTable'
-				>
-					<thead>
-						<tr>
-							<th>Job Name</th>
-							<th>Capability</th>
-							<th>Band Level</th>
-						</tr>
-					</thead>
-					<tbody>
-						{jobRoles.map((jobRole) => (
-							<tr className='tableBody' key={jobRole.jobID}>
-								<td>
-									<Link
-										to={{
-											pathname: `/job-role/${jobRole.jobName}`,
-										}}
-									>
-										{jobRole.jobName}
-									</Link>
-								</td>
-								<td>{jobRole.capabilityName}</td>
-								<td>{jobRole.bandName}</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
+			<div className='row'>
+				<div className={`col${user === 'ADMIN' ? '-8' : ''}`}>
+					<div className='d-flex justify-content-center'>
+						<table
+							className='table table-striped table-bordered text-center'
+							id='jobTable'
+						>
+							<thead>
+								<tr>
+									<th>Job Name</th>
+									<th>Capability</th>
+									<th>Band Level</th>
+								</tr>
+							</thead>
+							<tbody>
+								{jobRoles.map((jobRole) => (
+									<tr className='tableBody' key={jobRole.jobName}>
+										<td>
+											<Link
+												to={{
+													pathname: `/job-role/${jobRole.jobName}`,
+												}}
+											>
+												{jobRole.jobName}
+											</Link>
+										</td>
+										<td>{jobRole.capabilityName}</td>
+										<td>{jobRole.bandName}</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				{user === 'ADMIN' && (
+					<div className='col-4'>
+						<AddJobRole />
+					</div>
+				)}
 			</div>
 		)
 	}
