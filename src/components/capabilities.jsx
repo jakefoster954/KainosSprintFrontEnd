@@ -21,35 +21,38 @@ class Capabilities extends Component {
 		console.log(capabilities)
 
 		return (
-			<div className='d-flex justify-content-center'>
-				<table
-					className='table table-striped table-bordered text-center'
-					id='capabilityTable'
-				>
-					<thead>
-						<tr>
-							<th>Capability</th>
-							<th>Capability Lead</th>
-						</tr>
-					</thead>
-					<tbody>
-						{capabilities.map((capability) => (
-							<tr className='tableBody' key={capability.capabilityName}>
-								<td>{capability.capabilityName}</td>
-								<td>
-									<Link
-										to={{
-											pathname: `/capability/${capability.leadName}`,
-										}}
-									>
-										{capability.leadName}
-									</Link>
-								</td>
+			<>
+				<h1>Capabilities</h1>
+				<div className='d-flex justify-content-center'>
+					<table
+						className='table table-striped table-bordered text-center'
+						id='capabilityTable'
+					>
+						<thead>
+							<tr>
+								<th>Capability</th>
+								<th>Capability Lead</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
-			</div>
+						</thead>
+						<tbody>
+							{capabilities.map((capability) => (
+								<tr className='tableBody' key={capability.capabilityName}>
+									<td>{capability.capabilityName}</td>
+									<td>
+										<Link
+											to={{
+												pathname: `/capability/${capability.leadName}`,
+											}}
+										>
+											{capability.leadName}
+										</Link>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			</>
 		)
 	}
 }

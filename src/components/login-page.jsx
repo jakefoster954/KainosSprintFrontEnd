@@ -86,10 +86,9 @@ class LoginPage extends Component {
 		return (
 			<div>
 				<div className='card-header'>
-					<h3>Login</h3>
+					<h1>Login</h1>
 				</div>
 				<div className='card-body'>
-					<h1>Login</h1>
 					<form onSubmit={this.handleSubmit}>
 						<Input
 							label='Email'
