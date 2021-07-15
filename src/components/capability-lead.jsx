@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { getCapabilityLead } from '../servcies/jobService'
+import NoPhoto from '../NoPhoto.png'
+import '../lead.css'
 
 class CapabilityLead extends Component {
 	state = {
@@ -15,7 +17,6 @@ class CapabilityLead extends Component {
 
 	async componentDidMount() {
 		await this.retreiveCapabilityLead()
-		console.log('mounted')
 	}
 
 	render() {
@@ -25,8 +26,16 @@ class CapabilityLead extends Component {
 				<div className='card' id='capabilityLeadCard'>
 					<div className='card-header text-center'>
 						<h1 id='capabilityLeadHeader'>{capabilityLead.leadName}</h1>
-						<h3 id='capabilityHeader'>Capability</h3>
-						<h3 id='bandLevelHeader'>Band Level</h3>
+					</div>
+					<div>
+						<img
+							src={
+								capabilityLead.leadPhoto ? capabilityLead.leadPhoto : NoPhoto
+							}
+							alt=''
+							width='100'
+							className='center rounded-circle'
+						></img>
 					</div>
 					<div className='card-body'>
 						<div className='jumbotron'>
@@ -35,12 +44,6 @@ class CapabilityLead extends Component {
 								<p className='card-text'>{capabilityLead.leadMessage}</p>
 							</div>
 						</div>
-					</div>
-					<div className='card-body'>
-						Find out more{' '}
-						<a href='#' target='_blank' rel='noopener noreferrer'>
-							here
-						</a>
 					</div>
 				</div>
 			</div>

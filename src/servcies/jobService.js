@@ -1,27 +1,16 @@
 import http from './httpService'
 
 export function getJobRoles() {
-	return http.get('http://localhost:8080/api/job-roles')
+	return http.get('http://localhost:8080/api/getJobNames')
 }
 
 export function getJobRole(jobName) {
-	const newJobName = jobName.replace(/\W+/g, '-')
-	console.log(newJobName, jobName)
-	return http.get(`http://localhost:8080/api/job-roles/${newJobName}`)
+	return http.get(`http://localhost:8080/api/getJobData/${jobName}`)
 }
 
 export function getCapabilities() {
-	return http.get('http://localhost:8080/api/getCapabilities')
-}
-
-export function getBandLevels() {
-	return http.get('http://localhost:8080/api/getBandLevels')
-}
-
-export function getCapabilityLead(leadName) {
-	const newLeadName = leadName.replace(/\W+/g, '-')
-	console.log(leadName, newLeadName)
-	return http.get(`http://localhost:8080/api/capabilities/${newLeadName}`)
+	console.log('GetCapabilities() is running')
+	return http.get('http://localhost:8080/api/getCapabilityLeads')
 }
 
 export function addJobToDb(job) {
@@ -32,4 +21,11 @@ export function addJobToDb(job) {
 		capabilityName: job.capability,
 		bandLevelName: job.bandLevel,
 	})
+
+
+}
+
+export function getCapabilityLead(leadName) {
+	return http.get(`http://localhost:8080/api/getCapabilityData/${leadName}`)
+
 }
