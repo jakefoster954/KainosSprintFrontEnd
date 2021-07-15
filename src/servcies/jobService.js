@@ -14,5 +14,5 @@ export function getCapabilities() {
 }
 
 export function getCapabilityLead(leadName) {
-	return http.get(`http://localhost:8080/api/getCapabilityData/${leadName}`)
+	return http.get(`http://localhost:8080/api/getCapabilityLeadData/${leadName}`)
 }
