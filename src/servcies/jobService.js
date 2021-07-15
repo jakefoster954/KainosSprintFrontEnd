@@ -19,7 +19,7 @@ export function addJobToDb(job) {
 		jobName: job.jobName,
 		jobSpec: job.jobSpec,
 		jobURL: job.jobURL,
-		jobFamilyName: job.capability,
+		capabilityName: job.capability,
 		bandLevelName: job.bandLevel,
 	})
 }
