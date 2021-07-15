@@ -35,3 +35,7 @@ export function getBandLevels() {
 export function getCapabilityNames() {
 	return http.get('http://localhost:8080/api/getCapabilities')
 }
+
+export function deleteJobRole(jobRoleName) {
+	return http.delete(`http://localhost:8080/api/delete-job/${jobRoleName}`)
+}
