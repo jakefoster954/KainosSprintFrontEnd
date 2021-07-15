@@ -20,14 +20,10 @@ class JobRole extends Component {
 			await deleteJobRole(jobName)
 			console.log("Job deleted")
 			alert("Job role (" + jobName + ") has successfully been deleted")
-			window.location = '/job-roles?success=jobDeleted'
+			window.location = '/job-roles'
 		} catch (e) {
 			if (e.response) {
-				const errors = { ...this.state.errors }
-				console.log(errors)
 				console.log(e.response.data)
-				errors.email = e.response.data.error
-				this.setState({ errors })
 			}
 		}
 	}
