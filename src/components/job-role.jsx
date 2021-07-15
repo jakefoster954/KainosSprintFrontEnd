@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getJobRole } from '../servcies/jobService'
+import { deleteJobRole, getJobRole } from '../servcies/jobService'
 
 class JobRole extends Component {
 	state = {
@@ -15,8 +15,26 @@ class JobRole extends Component {
 		await this.retreiveJobRole()
 	}
 
+	handleDelete = async (jobName) => {
+		try {
+			await deleteJobRole(jobName)
+			console.log("Job deleted")
+			alert("Job role (" + jobName + ") has successfully been deleted")
+			window.location = '/job-roles?success=jobDeleted'
+		} catch (e) {
+			if (e.response) {
+				const errors = { ...this.state.errors }
+				console.log(errors)
+				console.log(e.response.data)
+				errors.email = e.response.data.error
+				this.setState({ errors })
+			}
+		}
+	}
+
 	render() {
 		const { jobRole } = this.state
+		const { user } = this.props
 		return (
 			<div className='row mt-3 d-flex justify-content-center'>
 				<div className='card' id='jobCard'>
@@ -24,6 +42,9 @@ class JobRole extends Component {
 						<h1 id='jobHeader'>{jobRole.jobName}</h1>
 						<h3 id='capabilityHeader'>Capability - {jobRole.capabilityName}</h3>
 						<h3 id='bandLevelHeader'>Band Level - {jobRole.bandName}</h3>
+						{user === "ADMIN" && (
+							<a class="btn btn-danger text-white" onClick={() => this.handleDelete(jobRole.jobName)}>Delete Job Role</a>
+						)}
 					</div>
 					<div className='card-body'>
 						<div className='jumbotron'>
