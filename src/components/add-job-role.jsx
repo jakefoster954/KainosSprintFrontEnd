@@ -19,7 +19,9 @@ class AddJobRole extends Component {
 		},
 		capabilities: [],
 		bandLevels: [],
-		errors: {},
+		errors: {
+			jobName: '',
+		},
 	}
 
 	schema = {
@@ -78,15 +80,21 @@ class AddJobRole extends Component {
 	}
 
 	handleSubmit = async (e) => {
-		e.preventDefault()
-
 		const errors = this.validate()
 		this.setState({ errors: errors || {} })
 
 		if (errors) return
 
-		const response = await addJobToDb(this.state.jobRole)
-		console.log(response)
+		try {
+			await addJobToDb(this.state.jobRole)
+			e.target.reset()
+		} catch (e) {
+			if (e.response && e.response.code === 500) {
+				const errors = { ...this.state.errors }
+				errors.jobName = 'Something went wrong...'
+				this.setState({ errors })
+			}
+		}
 	}
 
 	render() {
