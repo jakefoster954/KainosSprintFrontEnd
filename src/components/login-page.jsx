@@ -9,7 +9,9 @@ class LoginPage extends Component {
 			email: '',
 			password: '',
 		},
-		errors: {},
+		errors: {
+			email: '',
+		},
 	}
 
 	schema = {
@@ -18,9 +20,9 @@ class LoginPage extends Component {
 	}
 
 	async hash(password) {
-		const cryptoJS = require("crypto-js");
-		const hash = cryptoJS.SHA3(password).toString();
-		console.log(hash);
+		const cryptoJS = require('crypto-js')
+		const hash = cryptoJS.SHA3(password).toString()
+		console.log(hash)
 		return hash
 	}
 
@@ -57,15 +59,30 @@ class LoginPage extends Component {
 		const errors = this.validate()
 		this.setState({ errors: errors || {} })
 
+		if (errors) return
+
 		const password = await this.hash(this.state.account.password)
 
-		const response = await login(this.state.account.email, password)
-		console.log(response)
-		console.log(password)
+		try {
+			const { data: user } = await login(this.state.account.email, password)
+			console.log(user)
+			console.log(password)
+			localStorage.setItem('user', user.userType)
+			window.location = '/job-roles'
+		} catch (e) {
+			if (e.response && e.response.status === 401) {
+				const errors = { ...this.state.errors }
+				console.log(errors)
+				console.log(e.response.data)
+				errors.email = e.response.data.error
+				this.setState({ errors })
+			}
+		}
 	}
 
 	render() {
 		const { account, errors } = this.state
+		console.log(errors)
 		return (
 			<div>
 				<div className='card-header'>
