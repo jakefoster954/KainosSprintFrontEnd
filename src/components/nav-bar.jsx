@@ -6,20 +6,35 @@ const NavBar = ({ user }) => {
 	console.log(user)
 	return (
 		<header>
-			<nav className='navbar navbar-light bg-primary'>
-				<Link className='navbar-brand' to='/job-roles'>
-					<img src={KainosLogo} alt='' height={30} width={130} />
-				</Link>
-				{user && (
-					<NavLink className='navbar-link' to='/logout'>
-						<h4 className='text-secondary'>Logout</h4>
-					</NavLink>
-				)}
-				{!user && (
-					<NavLink className='navbar-link' to='/login'>
-						<h4 className='text-secondary'>Login</h4>
-					</NavLink>
-				)}
+			<nav class="navbar navbar-expand-lg  navbar-light bg-primary">
+				<a class="navbar-brand" href="/job-roles">
+					<img src={KainosLogo} alt='' height={30} width={130} /></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+					<ul class="navbar-nav">
+
+						{user && (
+							<>
+								<li class="nav-item">
+									<a class="nav-link text-secondary" href="/job-roles">Job Roles</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-secondary" href="/capabilities">Capabilities</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link btn btn-secondary ml-3" role="button" href="/logout">Logout</a>
+								</li>
+							</>
+						)}
+						{!user && (
+							<li class="nav-item">
+								<a class="nav-link btn btn-secondary" role="button" href="/login">Login</a>
+							</li>
+						)}
+					</ul>
+				</div>
 			</nav>
 		</header>
 	)

@@ -68,7 +68,7 @@ class LoginPage extends Component {
 			console.log(user)
 			console.log(password)
 			localStorage.setItem('user', user.userType)
-			window.location = '/job-roles'
+			window.location = '/home'
 		} catch (e) {
 			if (e.response && e.response.status === 401) {
 				const errors = { ...this.state.errors }
