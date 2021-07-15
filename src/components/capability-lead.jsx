@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getCapabilityLead } from '../servcies/jobService'
-import './lead.css'
+import NoPhoto from '../NoPhoto.png'
+import '../lead.css'
 
 class CapabilityLead extends Component {
 	state = {
@@ -8,7 +9,9 @@ class CapabilityLead extends Component {
 	}
 
 	async retreiveCapabilityLead() {
-		const { data: capabilityLead } = await getCapabilityLead(this.props.match.params.leadName)
+		const { data: capabilityLead } = await getCapabilityLead(
+			this.props.match.params.leadName
+		)
 		this.setState({ capabilityLead })
 	}
 
@@ -19,14 +22,20 @@ class CapabilityLead extends Component {
 	render() {
 		const { capabilityLead } = this.state
 		return (
-			
 			<div className='row mt-3 d-flex justify-content-center'>
 				<div className='card' id='capabilityLeadCard'>
 					<div className='card-header text-center'>
 						<h1 id='capabilityLeadHeader'>{capabilityLead.leadName}</h1>
 					</div>
 					<div>
-						<img src = {capabilityLead.leadPhoto} width ='100' className = "center rounded-circle"></img>
+						<img
+							src={
+								capabilityLead.leadPhoto ? capabilityLead.leadPhoto : NoPhoto
+							}
+							alt=''
+							width='100'
+							className='center rounded-circle'
+						></img>
 					</div>
 					<div className='card-body'>
 						<div className='jumbotron'>
@@ -36,7 +45,6 @@ class CapabilityLead extends Component {
 							</div>
 						</div>
 					</div>
-					
 				</div>
 			</div>
 		)
