@@ -11,6 +11,8 @@
     "bcryptjs": "^2.4.3",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.6.0",
+    "bootstrap-select": "^1.13.18",
+    "bootstrap-select-dropdown": "^0.14.6",
     "crypto-js": "^4.0.0",
     "joi-browser": "^13.4.0",
     "password-hash": "^1.2.2",
