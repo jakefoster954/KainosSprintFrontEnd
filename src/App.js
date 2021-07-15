@@ -11,6 +11,7 @@ import LoginPage from './components/login-page'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './theme.css'
 import Logout from './components/logout'
+import HomePage from './components/home'
 
 class App extends Component {
 	state = {
@@ -32,6 +33,7 @@ class App extends Component {
 							<Route path='/job-roles' component={JobRoles} />
 							<Route path='/job-role/:jobName' component={JobRole} />
 							<Route path='/login' component={LoginPage} />
+							<Route path='/home' component={HomePage} />
 							<Route path='/capabilities' component={Capabilities} />
 							<Route path='/capability/:leadName' component={CapabilityLead} />
 							<Route path='/not-found' component={NotFound} />
