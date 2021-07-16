@@ -28,7 +28,7 @@ class CapabilityLead extends Component {
 						<h1 id='capabilityLeadHeader'>{capabilityLead.leadName}</h1>
 					</div>
 					<div>
-						<img
+						<img id="capabilityLeadPhoto"
 							src={
 								capabilityLead.leadPhoto ? capabilityLead.leadPhoto : NoPhoto
 							}
@@ -41,7 +41,7 @@ class CapabilityLead extends Component {
 						<div className='jumbotron'>
 							<h3 className='display-9'>Capability Lead Message</h3>
 							<div className='mt-3'>
-								<p className='card-text'>{capabilityLead.leadMessage}</p>
+								<p id="capabilityLeadMsg" className='card-text'>{capabilityLead.leadMessage}</p>
 							</div>
 						</div>
 					</div>
