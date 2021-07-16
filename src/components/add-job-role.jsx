@@ -83,7 +83,10 @@ class AddJobRole extends Component {
 		const errors = this.validate()
 		this.setState({ errors: errors || {} })
 
-		if (errors) return
+		if (errors) {
+			e.preventDefault();
+			return
+		}
 
 		try {
 			await addJobToDb(this.state.jobRole)

@@ -22,7 +22,7 @@ class Capabilities extends Component {
 
 		return (
 			<>
-				<h1>Capabilities</h1>
+				<h1 class="pb-3">Capabilities</h1>
 				<div className='d-flex justify-content-center'>
 					<table
 						className='table table-striped table-bordered text-center'

@@ -18,7 +18,7 @@ export function addJobToDb(job) {
 	return http.post(`http://localhost:8080/api/add-job`, {
 		jobName: job.jobName,
 		jobSpec: job.jobSpec,
-		jobURL: job.jobURL,
+		jobUrl: job.jobURL,
 		capabilityName: job.capability,
 		bandLevelName: job.bandLevel,
 	})
