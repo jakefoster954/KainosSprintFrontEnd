@@ -24,7 +24,7 @@ class JobRoles extends Component {
 
 		return (
 			<>
-				<h1>Job Roles</h1>
+				<h1 class="pb-3">Job Roles</h1>
 				<div className='row'>
 					<div className={`col${user === 'ADMIN' ? '-8' : ''}`}>
 						<div className='d-flex justify-content-center'>

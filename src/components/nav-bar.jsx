@@ -7,8 +7,15 @@ const NavBar = ({ user }) => {
 	return (
 		<header>
 			<nav class="navbar navbar-expand-lg  navbar-light bg-primary">
-				<a class="navbar-brand" href="/job-roles">
-					<img src={KainosLogo} alt='' height={30} width={130} /></a>
+				<a class="navbar-brand pb-3" href="/job-roles">
+					<img src={KainosLogo} alt='' height={30} width={130} />
+					</a>
+						{user=== "ADMIN" && (
+							<a class="nav-item text-white font-weight-bold disabled">Admin</a>
+						)}
+						{user=== "EMPLOYEE" && (
+							<a class="nav-item text-white font-weight-bold disabled">Employee</a>
+						)}
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
