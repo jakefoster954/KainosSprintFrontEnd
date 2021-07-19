@@ -27,7 +27,11 @@ class AddJobRole extends Component {
 	schema = {
 		jobName: Joi.string().min(5).required().label('Job Name'),
 		jobSpec: Joi.string().max(2000).required().label('Job Specification'),
-		jobURL: Joi.string().max(300).required().label('Job URL'),
+		jobURL: Joi.string()
+			.regex(/^https?:\/\/(.*)/)
+			.max(300)
+			.required()
+			.label('Job URL'),
 		capability: Joi.string().required().label('Capability'),
 		bandLevel: Joi.string().required().label('Band Level'),
 	}
@@ -45,6 +49,9 @@ class AddJobRole extends Component {
 		const obj = { [name]: value }
 		const schema = { [name]: this.schema[name] }
 		const { error } = Joi.validate(obj, schema)
+		if (error && error.details[0].context.key === 'jobURL') {
+			error.details[0].message = 'Job URL must begin with http:// or https://'
+		}
 		return error ? error.details[0].message : null
 	}
 
@@ -84,7 +91,7 @@ class AddJobRole extends Component {
 		this.setState({ errors: errors || {} })
 
 		if (errors) {
-			e.preventDefault();
+			e.preventDefault()
 			return
 		}
 
