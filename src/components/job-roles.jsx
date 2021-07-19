@@ -8,7 +8,7 @@ class JobRoles extends Component {
 		jobRoles: [],
 	}
 
-	async retreiveJobRoles() {
+	retreiveJobRoles = async () => {
 		const { data: jobRoles } = await getJobRoles()
 		this.setState({ jobRoles })
 	}
@@ -61,7 +61,7 @@ class JobRoles extends Component {
 					</div>
 					{user === 'ADMIN' && (
 						<div className='col-4'>
-							<AddJobRole />
+							<AddJobRole retreiveJobRoles={this.retreiveJobRoles} />
 						</div>
 					)}
 				</div>

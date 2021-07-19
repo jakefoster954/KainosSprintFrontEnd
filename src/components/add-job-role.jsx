@@ -87,6 +87,7 @@ class AddJobRole extends Component {
 	}
 
 	handleSubmit = async (e) => {
+		e.preventDefault()
 		const errors = this.validate()
 		this.setState({ errors: errors || {} })
 
@@ -98,6 +99,7 @@ class AddJobRole extends Component {
 		try {
 			await addJobToDb(this.state.jobRole)
 			e.target.reset()
+			await this.props.retreiveJobRoles()
 		} catch (e) {
 			if (e.response && e.response.code === 500) {
 				const errors = { ...this.state.errors }
@@ -109,7 +111,6 @@ class AddJobRole extends Component {
 
 	render() {
 		const { capabilities, bandLevels, errors } = this.state
-		console.log(errors)
 		return (
 			<div>
 				<div className='card-header'>
