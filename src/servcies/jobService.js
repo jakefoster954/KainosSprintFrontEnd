@@ -1,21 +1,21 @@
 import http from './httpService'
 
 export function getJobRoles() {
-	return http.get('http://localhost:8080/api/getJobNames')
+	return http.get('http://localhost:8080/api/employee/getJobNames')
 }
 
 export function getJobRole(jobName) {
-	return http.get(`http://localhost:8080/api/getJobData/${jobName}`)
+	return http.get(`http://localhost:8080/api/employee/getJobData/${jobName}`)
 }
 
 export function getCapabilities() {
 	console.log('GetCapabilities() is running')
-	return http.get('http://localhost:8080/api/getCapabilityLeads')
+	return http.get('http://localhost:8080/api/employee/getCapabilityLeads')
 }
 
 export function addJobToDb(job) {
 	console.log(job)
-	return http.post(`http://localhost:8080/api/add-job`, {
+	return http.post(`http://localhost:8080/api/admin/add-job`, {
 		jobName: job.jobName,
 		jobSpec: job.jobSpec,
 		jobUrl: job.jobURL,
@@ -25,17 +25,17 @@ export function addJobToDb(job) {
 }
 
 export function getCapabilityLead(leadName) {
-	return http.get(`http://localhost:8080/api/getCapabilityLeadData/${leadName}`)
+	return http.get(`http://localhost:8080/api/employee/getCapabilityLeadData/${leadName}`)
 }
 
 export function getBandLevels() {
-	return http.get('http://localhost:8080/api/getBandLevels')
+	return http.get('http://localhost:8080/api/employee/getBandLevels')
 }
 
 export function getCapabilityNames() {
-	return http.get('http://localhost:8080/api/getCapabilities')
+	return http.get('http://localhost:8080/api/employee/getCapabilities')
 }
 
 export function deleteJobRole(jobRoleName) {
-	return http.delete(`http://localhost:8080/api/delete-job/${jobRoleName}`)
+	return http.delete(`http://localhost:8080/api/admin/delete-job/${jobRoleName}`)
 }
