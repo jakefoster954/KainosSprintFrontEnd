@@ -37,13 +37,19 @@ class App extends Component {
 									<JobRoles user={this.state.user} {...props} />
 								)}
 							/>
-							<Route path='/job-role/:jobName' 
+							<Route
+								path='/job-role/:jobName'
 								render={(props) => (
 									<JobRole user={this.state.user} {...props} />
 								)}
 							/>
 							<Route path='/login' component={LoginPage} />
-							<Route path='/home' component={HomePage} />
+							<Route
+								path='/home'
+								render={(props) => (
+									<HomePage user={this.state.user} {...props} />
+								)}
+							/>
 							<Route path='/capabilities' component={Capabilities} />
 							<Route path='/capability/:leadName' component={CapabilityLead} />
 							<Route path='/not-found' component={NotFound} />
