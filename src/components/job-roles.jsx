@@ -24,7 +24,7 @@ class JobRoles extends Component {
 
 		return (
 			<>
-				<h1 class="pb-3">Job Roles</h1>
+				<h1 class='pb-3'>Job Roles</h1>
 				<div className='row'>
 					<div className={`col${user === 'ADMIN' ? '-8' : ''}`}>
 						<div className='d-flex justify-content-center'>
@@ -48,7 +48,7 @@ class JobRoles extends Component {
 														pathname: `/job-role/${jobRole.jobName}`,
 													}}
 												>
-													{jobRole.jobName}
+													<div>{jobRole.jobName}</div>
 												</Link>
 											</td>
 											<td>{jobRole.capabilityName}</td>
