@@ -50,7 +50,12 @@ class App extends Component {
 									<HomePage user={this.state.user} {...props} />
 								)}
 							/>
-							<Route path='/capabilities' component={Capabilities} />
+							<Route
+								path='/capabilities'
+								render={(props) => (
+									<Capabilities user={this.state.user} {...props} />
+								)}
+							/>
 							<Route path='/capability/:leadName' component={CapabilityLead} />
 							<Route path='/not-found' component={NotFound} />
 							<Route path='/addJob' component={AddJobRole} />

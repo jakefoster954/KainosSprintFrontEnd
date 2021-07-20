@@ -13,6 +13,10 @@ export function getCapabilities() {
 	return http.get('http://localhost:8080/api/employee/getCapabilityLeads')
 }
 
+export function getCapabilityLeadNames() {
+	return http.get('http://localhost:8080/api/employee/getCapabilityLeadNames')
+}
+
 export function addJobToDb(job) {
 	console.log(job)
 	return http.post(`http://localhost:8080/api/admin/add-job`, {
@@ -24,8 +28,17 @@ export function addJobToDb(job) {
 	})
 }
 
+export function addCapabilityToDb(capability) {
+	return http.post('http://localhost:8080/api/admin/add-capability', {
+		capabilityName: capability.capabilityName,
+		leadName: capability.capabilityLead,
+	})
+}
+
 export function getCapabilityLead(leadName) {
-	return http.get(`http://localhost:8080/api/employee/getCapabilityLeadData/${leadName}`)
+	return http.get(
+		`http://localhost:8080/api/employee/getCapabilityLeadData/${leadName}`
+	)
 }
 
 export function getBandLevels() {
@@ -37,5 +50,7 @@ export function getCapabilityNames() {
 }
 
 export function deleteJobRole(jobRoleName) {
-	return http.delete(`http://localhost:8080/api/admin/delete-job/${jobRoleName}`)
+	return http.delete(
+		`http://localhost:8080/api/admin/delete-job/${jobRoleName}`
+	)
 }
