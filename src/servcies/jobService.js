@@ -39,3 +39,7 @@ export function getCapabilityNames() {
 export function deleteJobRole(jobRoleName) {
 	return http.delete(`http://localhost:8080/api/admin/delete-job/${jobRoleName}`)
 }
+
+export function deleteCapability(capabilityName) {
+	return http.delete(`http://localhost:8080/api/admin/delete-capability/${capabilityName}`)
+}
