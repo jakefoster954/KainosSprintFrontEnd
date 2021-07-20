@@ -20,7 +20,7 @@ class Capabilities extends Component {
 	handleDelete = async (capabilityName) => {
 		try {
 			await deleteCapability(capabilityName)
-			console.log("Capability deleted")
+			console.log('Capability deleted')
 			alert(`Capability ${capabilityName} has successfully been deleted`)
 			window.location = '/capabilities'
 		} catch (e) {
@@ -36,7 +36,7 @@ class Capabilities extends Component {
 		console.log(capabilities)
 		return (
 			<>
-				<h1 class="pb-3">Capabilities</h1>
+				<h1 class='pb-3'>Capabilities</h1>
 				<div className='d-flex justify-content-center'>
 					<table
 						className='table table-striped table-bordered text-center'
@@ -46,7 +46,7 @@ class Capabilities extends Component {
 							<tr>
 								<th>Capability</th>
 								<th>Capability Lead</th>
-								{ user === "ADMIN" && (<th>DELETE Capability</th>)}
+								{user === 'ADMI' && <th>DELETE Capability</th>}
 							</tr>
 						</thead>
 						<tbody>
@@ -62,7 +62,16 @@ class Capabilities extends Component {
 											{capability.leadName}
 										</Link>
 									</td>
-									{ user === "ADMIN" && (<a class="btn btn-danger text-white" onClick={() => this.handleDelete(capability.capabilityName)}>Delete Capability</a> )}
+									{user === 'ADMI' && (
+										<a
+											class='btn btn-danger text-white'
+											onClick={() =>
+												this.handleDelete(capability.capabilityName)
+											}
+										>
+											Delete Capability
+										</a>
+									)}
 								</tr>
 							))}
 						</tbody>

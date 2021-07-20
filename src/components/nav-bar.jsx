@@ -10,11 +10,11 @@ const NavBar = ({ user }) => {
 				<NavLink to='/home' className='navbar-brand pb-3'>
 					<img src={KainosLogo} alt='' height={30} width={130} />
 				</NavLink>
-				{user === 'ADMIN' && (
+				{user === 'ADMI' && (
 					//eslint-disable-next-line
 					<a className='nav-item text-white font-weight-bold disabled'>Admin</a>
 				)}
-				{user === 'EMPLOYEE' && (
+				{user === 'EMPL' && (
 					//eslint-disable-next-line
 					<a className='nav-item text-white font-weight-bold disabled'>
 						Employee
@@ -36,7 +36,7 @@ const NavBar = ({ user }) => {
 					id='navbarNav'
 				>
 					<ul className='navbar-nav'>
-						{user && (
+						{user !== '' && (
 							<>
 								<li className='nav-item'>
 									<a className='nav-link text-secondary' href='/job-roles'>
@@ -59,7 +59,7 @@ const NavBar = ({ user }) => {
 								</li>
 							</>
 						)}
-						{!user && (
+						{user === '' && (
 							<li className='nav-item'>
 								<a
 									className='nav-link btn btn-secondary'
