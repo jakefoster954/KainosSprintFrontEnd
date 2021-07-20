@@ -62,7 +62,7 @@ class Capabilities extends Component {
 											{capability.leadName}
 										</Link>
 									</td>
-									{ user === "ADMIN" && (<a class="btn btn-danger text-white" onClick={() => this.handleDelete(Capabilities.capabilityName)}>Delete Capability</a> )}
+									{ user === "ADMIN" && (<a class="btn btn-danger text-white" onClick={() => this.handleDelete(capability.capabilityName)}>Delete Capability</a> )}
 								</tr>
 							))}
 						</tbody>
