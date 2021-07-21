@@ -16,11 +16,15 @@ import HomePage from './components/home'
 
 class App extends Component {
 	state = {
-		user: {},
+		user: '',
 	}
 	componentDidMount() {
-		const user = localStorage.getItem('user')
-		this.setState({ user })
+		const session = localStorage.getItem('user')
+		if (session) {
+			const user = session.substring(0, 4)
+			console.log(user)
+			this.setState({ user })
+		}
 	}
 
 	render() {

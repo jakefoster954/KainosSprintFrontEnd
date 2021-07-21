@@ -64,10 +64,15 @@ class LoginPage extends Component {
 		const password = await this.hash(this.state.account.password)
 
 		try {
-			const { data: user } = await login(this.state.account.email, password)
-			console.log(user)
-			console.log(password)
-			localStorage.setItem('user', user.userType)
+			const { data: sessionKey } = await login(
+				this.state.account.email,
+				password
+			)
+			console.log(sessionKey.sessionKey)
+			document.cookie = `sessionKey=${sessionKey.sessionKey}`
+
+			localStorage.setItem('user', sessionKey.sessionKey)
+
 			window.location = '/home'
 		} catch (e) {
 			if (e.response && e.response.status === 401) {
