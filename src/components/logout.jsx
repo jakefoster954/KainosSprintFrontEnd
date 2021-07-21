@@ -4,6 +4,7 @@ class Logout extends Component {
 	componentDidMount() {
 		localStorage.removeItem('user')
 		window.location = '/login'
+		console.log('foo')
 	}
 
 	render() {
