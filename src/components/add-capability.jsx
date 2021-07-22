@@ -44,6 +44,7 @@ class AddCapability extends Component {
 	}
 
 	async componentDidMount() {
+		console.log(this.props)
 		await this.retrieveCapabilityLeadNames()
 	}
 
@@ -72,7 +73,7 @@ class AddCapability extends Component {
 		try {
 			await addCapabilityToDb(this.state.capability)
 			e.target.reset()
-			await this.props.retreiveCapbilities()
+			await this.props.retreiveCapabilities()
 		} catch (e) {
 			if (e.response && e.response.code === 500) {
 				const errors = { ...this.state.errors }
@@ -84,8 +85,6 @@ class AddCapability extends Component {
 
 	render() {
 		const { capabilityLeadNames, errors } = this.state
-		console.log(capabilityLeadNames)
-		console.log(errors)
 		return (
 			<>
 				<div className='card-header'>
