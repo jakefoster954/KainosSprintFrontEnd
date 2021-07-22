@@ -69,7 +69,7 @@ class LoginPage extends Component {
 				password
 			)
 			console.log(sessionKey.sessionKey)
-			document.cookie = `sessionKey=${sessionKey.sessionKey}`
+			document.cookie = `sessionKey=${sessionKey.sessionKey};max-age=3600`
 
 			localStorage.setItem('user', sessionKey.sessionKey)
 
