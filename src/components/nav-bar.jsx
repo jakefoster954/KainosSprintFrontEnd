@@ -39,14 +39,17 @@ const NavBar = ({ user }) => {
 						{user !== '' && (
 							<>
 								<li className='nav-item'>
-									<a className='nav-link text-secondary' href='/job-roles'>
+									<NavLink className='nav-link text-secondary' to='/job-roles'>
 										Job Roles
-									</a>
+									</NavLink>
 								</li>
 								<li className='nav-item'>
-									<a className='nav-link text-secondary' href='/capabilities'>
+									<NavLink
+										className='nav-link text-secondary'
+										to='/capabilities'
+									>
 										Capabilities
-									</a>
+									</NavLink>
 								</li>
 								<li className='nav-item'>
 									<a

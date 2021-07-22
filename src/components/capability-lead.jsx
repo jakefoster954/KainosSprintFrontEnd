@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getCapabilityLead } from '../servcies/jobService'
+import { Redirect } from 'react-router-dom'
 import NoPhoto from '../NoPhoto.png'
 import '../lead.css'
 
@@ -21,14 +22,18 @@ class CapabilityLead extends Component {
 
 	render() {
 		const { capabilityLead } = this.state
-		return (
+		const { user } = this.props
+		return user === '' ? (
+			<Redirect to='/login' />
+		) : (
 			<div className='row mt-3 d-flex justify-content-center'>
 				<div className='card' id='capabilityLeadCard'>
 					<div className='card-header text-center'>
 						<h1 id='capabilityLeadHeader'>{capabilityLead.leadName}</h1>
 					</div>
 					<div>
-						<img id="capabilityLeadPhoto"
+						<img
+							id='capabilityLeadPhoto'
 							src={
 								capabilityLead.leadPhoto ? capabilityLead.leadPhoto : NoPhoto
 							}
@@ -41,7 +46,9 @@ class CapabilityLead extends Component {
 						<div className='jumbotron'>
 							<h3 className='display-9'>Capability Lead Message</h3>
 							<div className='mt-3'>
-								<p id="capabilityLeadMsg" className='card-text'>{capabilityLead.leadMessage}</p>
+								<p id='capabilityLeadMsg' className='card-text'>
+									{capabilityLead.leadMessage}
+								</p>
 							</div>
 						</div>
 					</div>
