@@ -7,3 +7,9 @@ export function login(userEmail, userPassword) {
 		userPassword,
 	})
 }
+
+export function logout() {
+	return http.delete('http://localhost:8080/api/employee/logout', {
+		withCredentials: true,
+	})
+}
