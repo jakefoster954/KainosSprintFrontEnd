@@ -74,3 +74,9 @@ export function deleteCapability(capabilityName) {
 		}
 	)
 }
+
+export function getTrainingData(bandName) {
+	return http.get(`http://localhost:8080/api/employee/getTrainingData/${bandName}`, {
+		withCredentials: true,
+	})
+}
