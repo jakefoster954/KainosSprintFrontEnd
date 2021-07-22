@@ -137,7 +137,7 @@ class AddJobRole extends Component {
 							error={errors.jobURL}
 						/>
 						<Select
-							label='Capability'
+							label='Capability / Job Family'
 							name='capability'
 							options={capabilities}
 							onChange={this.handleChange}
