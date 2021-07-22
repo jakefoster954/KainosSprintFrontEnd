@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getJobRoles } from '../servcies/jobService'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import AddJobRole from './add-job-role'
 
 class JobRoles extends Component {
@@ -22,7 +22,9 @@ class JobRoles extends Component {
 		const { user } = this.props
 		console.log(this.props.user)
 
-		return (
+		return user === '' ? (
+			<Redirect to='/login' />
+		) : (
 			<>
 				<h1 class='pb-3'>Job Roles</h1>
 				<div className='row'>

@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import { deleteJobRole, getJobRole, getTrainingData } from '../servcies/jobService'
+import {
+	deleteJobRole,
+	getJobRole,
+	getTrainingData,
+} from '../servcies/jobService'
+import { Redirect } from 'react-router-dom'
 
 class JobRole extends Component {
 	state = {
 		jobRole: {},
-		trainingCourses: []
+		trainingCourses: [],
 	}
 
 	async retreiveJobRole() {
@@ -27,7 +32,7 @@ class JobRole extends Component {
 	handleDelete = async (jobName) => {
 		try {
 			await deleteJobRole(jobName)
-			console.log("Job deleted")
+			console.log('Job deleted')
 			alert(`Job role ${jobName} has successfully been deleted`)
 			window.location = '/job-roles'
 		} catch (e) {
@@ -40,15 +45,22 @@ class JobRole extends Component {
 	render() {
 		const { jobRole, trainingCourses } = this.state
 		const { user } = this.props
-		return (
+		return user === '' ? (
+			<Redirect to='/login' />
+		) : (
 			<div className='row mt-3 d-flex justify-content-center'>
 				<div className='card' id='jobCard'>
 					<div className='card-header text-center'>
 						<h1 id='jobHeader'>{jobRole.jobName}</h1>
 						<h3 id='capabilityHeader'>Capability - {jobRole.capabilityName}</h3>
 						<h3 id='bandLevelHeader'>Band Level - {jobRole.bandName}</h3>
-						{user === "ADMI" && (
-							<a class="btn btn-danger text-white" onClick={() => this.handleDelete(jobRole.jobName)}>Delete Job Role</a>
+						{user === 'ADMI' && (
+							<a
+								class='btn btn-danger text-white'
+								onClick={() => this.handleDelete(jobRole.jobName)}
+							>
+								Delete Job Role
+							</a>
 						)}
 					</div>
 					<div className='card-body'>
@@ -60,13 +72,19 @@ class JobRole extends Component {
 						</div>
 					</div>
 					<div className='card-body text-center'>
-						<a class="btn btn-primary text-white"
+						<a
+							class='btn btn-primary text-white'
 							href={`${jobRole.jobUrl}`}
 							target='_blank'
-							rel='noopener noreferrer'>Find out more</a>
+							rel='noopener noreferrer'
+						>
+							Find out more
+						</a>
 					</div>
 					<div className='p-5'>
-						<h2 className='pb-3'>Relevant Training (Band - {jobRole.bandName})</h2>
+						<h2 className='pb-3'>
+							Relevant Training (Band - {jobRole.bandName})
+						</h2>
 						<table
 							className='table table-striped table-bordered text-center pt-3'
 							id='trainingTable'
@@ -81,11 +99,16 @@ class JobRole extends Component {
 								{trainingCourses.map((training) => (
 									<tr className='tableBody' key={training.trainingName}>
 										<td>{training.trainingName}</td>
-										<td><a
-											className='btn btn-secondary'
-											href={`${training.trainingLink}`}
-											target='_blank'
-											rel='noopener noreferrer'>Find out more</a></td>
+										<td>
+											<a
+												className='btn btn-secondary'
+												href={`${training.trainingLink}`}
+												target='_blank'
+												rel='noopener noreferrer'
+											>
+												Find out more
+											</a>
+										</td>
 									</tr>
 								))}
 							</tbody>
