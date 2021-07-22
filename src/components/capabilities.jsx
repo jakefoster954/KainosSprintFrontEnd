@@ -9,7 +9,7 @@ class Capabilities extends Component {
 		capabilities: [],
 	}
 
-	async retreiveCapabilities() {
+	retreiveCapabilities = async () => {
 		const { data: capabilities } = await getCapabilities()
 		console.log('called')
 		console.log(capabilities)
