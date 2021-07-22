@@ -35,9 +35,7 @@ class Capabilities extends Component {
 		const { capabilities } = this.state
 		const { user } = this.props
 		console.log(capabilities)
-		return user === '' ? (
-			<Redirect to='/login' />
-		) : (
+		return (
 			<>
 				<h1 class='pb-3'>Capabilities</h1>
 				<div className='row'>

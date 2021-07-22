@@ -22,9 +22,7 @@ class JobRoles extends Component {
 		const { user } = this.props
 		console.log(this.props.user)
 
-		return user === '' ? (
-			<Redirect to='/login' />
-		) : (
+		return (
 			<>
 				<h1 class='pb-3'>Job Roles</h1>
 				<div className='row'>

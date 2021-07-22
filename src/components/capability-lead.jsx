@@ -23,9 +23,7 @@ class CapabilityLead extends Component {
 	render() {
 		const { capabilityLead } = this.state
 		const { user } = this.props
-		return user === '' ? (
-			<Redirect to='/login' />
-		) : (
+		return (
 			<div className='row mt-3 d-flex justify-content-center'>
 				<div className='card' id='capabilityLeadCard'>
 					<div className='card-header text-center'>
