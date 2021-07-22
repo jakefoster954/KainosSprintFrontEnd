@@ -77,9 +77,7 @@ class LoginPage extends Component {
 		} catch (e) {
 			if (e.response && e.response.status === 401) {
 				const errors = { ...this.state.errors }
-				console.log(errors)
-				console.log(e.response.data)
-				errors.email = e.response.data.error
+				errors.email = 'Invalid Email or Password'
 				this.setState({ errors })
 			}
 		}
