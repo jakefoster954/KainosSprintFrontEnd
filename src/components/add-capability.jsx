@@ -19,7 +19,7 @@ class AddCapability extends Component {
 
 	schema = {
 		capabilityName: Joi.string().min(4).required().label('Capability Name'),
-		capabilityLead: Joi.string().required().label('Capability Lead'),
+		capabilityLead: Joi.string().allow('').label('Capability Lead'),
 	}
 
 	validate = () => {
@@ -84,6 +84,7 @@ class AddCapability extends Component {
 
 	render() {
 		const { capabilityLeadNames, errors } = this.state
+		console.log(capabilityLeadNames)
 		console.log(errors)
 		return (
 			<>

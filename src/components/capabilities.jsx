@@ -41,7 +41,7 @@ class Capabilities extends Component {
 			<>
 				<h1 class='pb-3'>Capabilities</h1>
 				<div className='row'>
-					<div className={`col${user === 'ADMIN' ? '-8' : ''}`}>
+					<div className={`col${user === 'ADMI' ? '-8' : ''}`}>
 						<div className='d-flex justify-content-center'>
 							<table
 								className='table table-striped table-bordered text-center'
@@ -86,7 +86,7 @@ class Capabilities extends Component {
 							</table>
 						</div>
 					</div>
-					{user === 'ADMIN' && (
+					{user === 'ADMI' && (
 						<div className='col-4'>
 							<AddCapability retreiveJobRoles={this.retreiveCapabilities} />
 						</div>
