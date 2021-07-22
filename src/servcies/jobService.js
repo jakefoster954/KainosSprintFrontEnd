@@ -19,6 +19,12 @@ export function getCapabilities() {
 	})
 }
 
+export function getCapabilityLeadNames() {
+	return http.get('http://localhost:8080/api/employee/getCapabilityLeadNames', {
+		withCredentials: true,
+	})
+}
+
 export function addJobToDb(job) {
 	console.log(job)
 	return http.post(
@@ -29,6 +35,19 @@ export function addJobToDb(job) {
 			jobUrl: job.jobURL,
 			capabilityName: job.capability,
 			bandLevelName: job.bandLevel,
+		},
+		{
+			withCredentials: true,
+		}
+	)
+}
+
+export function addCapabilityToDb(capability) {
+	return http.post(
+		'http://localhost:8080/api/admin/add-capability',
+		{
+			capabilityName: capability.capabilityName,
+			leadName: capability.capabilityLead,
 		},
 		{
 			withCredentials: true,
