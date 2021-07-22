@@ -9,8 +9,10 @@ class Capabilities extends Component {
 		capabilities: [],
 	}
 
-	async retreiveCapabilities() {
+	retreiveCapabilities = async () => {
 		const { data: capabilities } = await getCapabilities()
+		console.log('called')
+		console.log(capabilities)
 		this.setState({ capabilities })
 	}
 
@@ -49,7 +51,6 @@ class Capabilities extends Component {
 									<tr>
 										<th>Capability</th>
 										<th>Capability Lead</th>
-										
 									</tr>
 								</thead>
 								<tbody>
@@ -66,17 +67,24 @@ class Capabilities extends Component {
 												</Link>
 											</td>
 											<td className='align-middle'>
-											{user === 'ADMI' && (
-												<a
-													class='btn btn-danger text-white'
-													style={{opacity: capability.jobFamilyCount > 0 ? 0.5 : 1.0}}
-													onClick={() =>
-														{capability.jobFamilyCount > 0 ? alert("You cannot delete a Capability with an associated Job Family") : this.handleDelete(capability.capabilityName)}
-													}
-												>
-													Delete Capability
-												</a>
-											)}
+												{user === 'ADMI' && (
+													<a
+														class='btn btn-danger text-white'
+														style={{
+															opacity:
+																capability.jobFamilyCount > 0 ? 0.5 : 1.0,
+														}}
+														onClick={() => {
+															capability.jobFamilyCount > 0
+																? alert(
+																		'You cannot delete a Capability with an associated Job Family'
+																  )
+																: this.handleDelete(capability.capabilityName)
+														}}
+													>
+														Delete Capability
+													</a>
+												)}
 											</td>
 										</tr>
 									))}
@@ -86,7 +94,7 @@ class Capabilities extends Component {
 					</div>
 					{user === 'ADMI' && (
 						<div className='col-4'>
-							<AddCapability retreiveJobRoles={this.retreiveCapabilities} />
+							<AddCapability retreiveCapabilities={this.retreiveCapabilities} />
 						</div>
 					)}
 				</div>
