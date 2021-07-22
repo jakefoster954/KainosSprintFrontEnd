@@ -51,7 +51,7 @@ class Capabilities extends Component {
 									<tr>
 										<th>Capability</th>
 										<th>Capability Lead</th>
-										{user === 'ADMI' && <th>DELETE Capability</th>}
+										
 									</tr>
 								</thead>
 								<tbody>
@@ -67,16 +67,19 @@ class Capabilities extends Component {
 													{capability.leadName}
 												</Link>
 											</td>
+											<td className='align-middle'>
 											{user === 'ADMI' && (
 												<a
 													class='btn btn-danger text-white'
+													style={{opacity: capability.jobFamilyCount > 0 ? 0.5 : 1.0}}
 													onClick={() =>
-														this.handleDelete(capability.capabilityName)
+														{capability.jobFamilyCount > 0 ? alert("You cannot delete a Capability with an associated Job Family") : this.handleDelete(capability.capabilityName)}
 													}
 												>
 													Delete Capability
 												</a>
 											)}
+											</td>
 										</tr>
 									))}
 								</tbody>
