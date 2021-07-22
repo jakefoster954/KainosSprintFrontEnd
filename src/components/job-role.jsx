@@ -45,9 +45,7 @@ class JobRole extends Component {
 	render() {
 		const { jobRole, trainingCourses } = this.state
 		const { user } = this.props
-		return user === '' ? (
-			<Redirect to='/login' />
-		) : (
+		return (
 			<div className='row mt-3 d-flex justify-content-center'>
 				<div className='card' id='jobCard'>
 					<div className='card-header text-center'>
